@@ -1,0 +1,115 @@
+.comp__table-wrap {
+  overflow-x: auto;
+  border-radius: var(--radius-lg);
+  border: 2px solid var(--deep-navy);
+  background: var(--white);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s var(--ease-out);
+  position: relative;
+}
+
+.comp__table-wrap::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: var(--radius-lg);
+  background: var(--deep-navy);
+  transform: translate(6px, 6px);
+  z-index: -1;
+}
+
+.comp__table-wrap--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.comp__table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 580px;
+}
+
+.comp__table thead {
+  background: var(--deep-navy);
+  color: var(--white);
+}
+
+.comp__table th {
+  padding: 18px 20px;
+  font-size: var(--text-sm);
+  font-weight: 700;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.comp__table th:first-child {
+  text-align: left;
+}
+
+.comp__table td {
+  padding: 14px 20px;
+  font-size: var(--text-sm);
+  text-align: center;
+  border-bottom: 1px solid var(--border-grey);
+}
+
+.comp__table tr:last-child td {
+  border-bottom: none;
+}
+
+.comp__table tbody tr {
+  transition: background var(--duration-fast);
+}
+
+.comp__table tbody tr:hover {
+  background: var(--blue-light);
+}
+
+.comp__feature {
+  text-align: left !important;
+  font-weight: 600;
+}
+
+.comp__col-highlight {
+  background: rgba(29, 78, 216, 0.06) !important;
+  position: relative;
+}
+
+thead .comp__col-highlight {
+  background: var(--royal-blue) !important;
+}
+
+.comp__logo {
+  height: 20px;
+  display: inline-block;
+  margin-right: 6px;
+  vertical-align: middle;
+  filter: brightness(0) invert(1);
+}
+
+.comp__yes {
+  color: #16a34a;
+  font-weight: 800;
+  font-size: 18px;
+}
+
+.comp__no {
+  color: #dc2626;
+  font-weight: 800;
+  font-size: 18px;
+}
+
+.comp__partial {
+  color: #ca8a04;
+  font-weight: 800;
+  font-size: 18px;
+}
+
+@media (max-width: 640px) {
+  .comp__table th,
+  .comp__table td {
+    padding: 10px 12px;
+    font-size: var(--text-xs);
+  }
+}

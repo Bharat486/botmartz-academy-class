@@ -1,0 +1,108 @@
+/* Trust Metrics */
+.trust {
+  background: var(--grid-grey);
+  border-top: 1px solid var(--border-grey);
+  border-bottom: 1px solid var(--border-grey);
+}
+
+.trust__grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.trust__card {
+  text-align: center;
+  padding: 24px 12px;
+  background: var(--white);
+  border: 1.5px solid var(--border-grey);
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  transition: transform var(--duration-md) var(--ease-out),
+              box-shadow var(--duration-md) var(--ease-out);
+}
+
+.trust__card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--card-shadow);
+}
+
+.trust__card--blue { border-bottom: 3px solid var(--royal-blue); }
+.trust__card--yellow { border-bottom: 3px solid var(--signal-yellow); }
+.trust__card--cyan { border-bottom: 3px solid var(--supporting-cyan); }
+
+.trust__icon {
+  font-size: 28px;
+}
+
+.trust__value {
+  font-size: var(--text-2xl);
+  font-weight: 800;
+  color: var(--deep-navy);
+  font-family: var(--font-mono);
+}
+
+.trust__label {
+  font-size: var(--text-xs);
+  color: var(--navy-light);
+  font-weight: 500;
+}
+
+/* Logos Strip */
+.trust__logos {
+  text-align: center;
+}
+
+.trust__logos-label {
+  font-size: var(--text-sm);
+  color: var(--navy-light);
+  margin-bottom: 16px;
+  display: block;
+}
+
+.trust__logos-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 32px;
+}
+
+.trust__logo-item {
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--border-grey);
+  letter-spacing: 0.05em;
+  transition: color var(--duration-md);
+}
+
+.trust__logo-item:hover {
+  color: var(--deep-navy);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .trust__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .trust__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 379px) {
+  .trust__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .trust__card {
+    padding: 16px 8px;
+  }
+}

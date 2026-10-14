@@ -1,0 +1,393 @@
+/* Hero Section */
+.hero {
+  padding-top: calc(72px + 2.5rem);
+  padding-bottom: 4rem;
+  min-height: 92vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.hero__grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 50px;
+  align-items: center;
+}
+
+/* Left Content */
+.hero__content {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: all 0.7s var(--ease-out);
+}
+
+.hero__content--visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.hero__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.hero__title {
+  font-size: var(--text-6xl);
+  font-weight: 900;
+  line-height: 1.12;
+  margin-bottom: 20px;
+  letter-spacing: -0.025em;
+  color: var(--deep-navy);
+}
+
+.hero__desc {
+  font-size: var(--text-base);
+  color: var(--navy-light);
+  line-height: 1.7;
+  margin-bottom: 28px;
+  max-width: 580px;
+}
+
+.hero__stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 30px;
+  padding: 16px 20px;
+  background: var(--grid-grey);
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--border-grey);
+}
+
+.hero__stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.hero__stat-num {
+  font-size: var(--text-2xl);
+  font-weight: 900;
+  color: var(--royal-blue);
+  font-family: var(--font-mono);
+}
+
+.hero__stat-label {
+  font-size: 11px;
+  color: var(--navy-light);
+  font-weight: 600;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.hero-btn-icon {
+  font-size: 16px;
+}
+
+.hero-live-now-ticker {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #f0fdf4;
+  border: 1.5px solid #86efac;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: var(--text-xs);
+  color: #166534;
+}
+
+.ticker-live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22c55e;
+  animation: pulse-glow 1.5s infinite;
+}
+
+.ticker-text strong {
+  color: #15803d;
+}
+
+/* Right Visual */
+.hero__visual {
+  opacity: 0;
+  transform: translateX(30px);
+  transition: all 0.7s var(--ease-out) 0.15s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero__visual--visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.hero__3d-scene {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  height: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.three-canvas-container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Floating 3D Dimensional Cards (Sleek Dark Glass) */
+.hero__float-card {
+  position: absolute;
+  background: #1E293B;
+  color: #FFFFFF;
+  border: 1.5px solid #334155;
+  border-radius: 12px;
+  box-shadow: 0 12px 36px rgba(15, 23, 42, 0.35), 0 4px 12px rgba(29, 78, 216, 0.15);
+  z-index: 4;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  pointer-events: auto;
+  transition: transform var(--duration-fast), box-shadow var(--duration-fast);
+}
+
+.hero__float-card:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 16px 44px rgba(15, 23, 42, 0.45), 0 0 20px rgba(29, 78, 216, 0.3);
+}
+
+/* Card 1: Top-left code snippet */
+.hero__float-card--code {
+  top: 10px;
+  left: -20px;
+  width: 250px;
+  padding: 12px 14px;
+  animation: float 6s ease-in-out infinite;
+}
+
+.code-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #334155;
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+}
+
+.code-dots {
+  display: flex;
+  gap: 5px;
+}
+
+.code-dots .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.code-dots .red { background: #ef4444; }
+.code-dots .yellow { background: #f59e0b; }
+.code-dots .green { background: #10b981; }
+
+.code-filename {
+  font-size: 10px;
+  font-family: var(--font-mono);
+  color: #94a3b8;
+}
+
+.hero__code {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1.5;
+  color: #e2e8f0;
+  margin: 0;
+  overflow: hidden;
+}
+
+.ck-kw {
+  color: #38bdf8;
+  font-weight: 700;
+}
+
+.ck-fn {
+  color: #facc15;
+  font-weight: 700;
+}
+
+/* Card 2: Right middle Agentic Gen AI */
+.hero__float-card--ai {
+  top: 44%;
+  right: -25px;
+  padding: 10px 14px;
+  width: 220px;
+  animation: float 5s ease-in-out infinite 0.8s;
+}
+
+/* Card 3: Bottom-left Python & DSA */
+.hero__float-card--dsa {
+  bottom: 20px;
+  left: 10px;
+  padding: 10px 14px;
+  width: 220px;
+  animation: float 7s ease-in-out infinite 1.5s;
+}
+
+.hero__icon-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.card-chip-icon {
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.card-chip-text {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.chip-title {
+  font-size: 12px;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.chip-sub {
+  font-size: 10px;
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+.chip-badge-live {
+  font-size: 9px;
+  font-weight: 800;
+  color: #22c55e;
+  background: rgba(34, 197, 94, 0.15);
+  border: 1px solid #22c55e;
+  padding: 2px 6px;
+  border-radius: 999px;
+}
+
+.chip-badge-gold {
+  font-size: 9px;
+  font-weight: 800;
+  color: #facc15;
+  background: rgba(250, 204, 21, 0.15);
+  border: 1px solid #facc15;
+  padding: 2px 6px;
+  border-radius: 999px;
+}
+
+/* Responsive Rules */
+@media (max-width: 1199px) {
+  .hero__grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+
+  .hero__badges,
+  .hero__actions {
+    justify-content: center;
+  }
+
+  .hero__desc {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero__stats {
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero__3d-scene {
+    margin: 0 auto;
+    max-width: 420px;
+    height: 420px;
+  }
+
+  .hero__float-card--code {
+    left: 0;
+  }
+
+  .hero__float-card--ai {
+    right: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero {
+    padding-top: calc(60px + 1.5rem);
+    padding-bottom: 2.5rem;
+    min-height: auto;
+  }
+
+  .hero__stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .hero__actions {
+    flex-direction: column;
+  }
+
+  .hero__actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero__3d-scene {
+    max-width: 320px;
+    height: 320px;
+  }
+
+  .hero__float-card--code {
+    width: 200px;
+    top: 0;
+    left: 0;
+    padding: 8px 10px;
+  }
+
+  .hero__float-card--ai {
+    width: 180px;
+    right: 0;
+    padding: 8px 10px;
+  }
+
+  .hero__float-card--dsa {
+    width: 180px;
+    bottom: 0;
+    left: 0;
+    padding: 8px 10px;
+  }
+
+  .hero__code {
+    font-size: 9px;
+  }
+}
+
+@media (max-width: 379px) {
+  .hero__stats {
+    grid-template-columns: 1fr;
+  }
+}
