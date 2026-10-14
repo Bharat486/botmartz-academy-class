@@ -1,101 +1,125 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
+
+/**
+ * Checks whether WebGL is supported in the current environment.
+ */
+function isWebGLAvailable() {
+  try {
+    const canvas = document.createElement('canvas');
+    return !!(window.WebGLRenderingContext && (canvas.getContext('webgl') || canvas.getContext('experimental-webgl')));
+  } catch {
+    return false;
+  }
+}
 
 export default function ThreeHeroCanvas() {
   const mountRef = useRef(null);
+  const [hasWebGL] = useState(() => (typeof window !== 'undefined' ? isWebGLAvailable() : true));
 
   useEffect(() => {
     const currentMount = mountRef.current;
-    if (!currentMount) return;
+    if (!currentMount || !hasWebGL || typeof window === 'undefined') return;
 
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReducedMotion) return;
+    let isRunning = true;
+    let animId = null;
 
-    const width = currentMount.clientWidth || 440;
-    const height = currentMount.clientHeight || 440;
+    // Check prefers-reduced-motion
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let prefersReducedMotion = mediaQuery.matches;
+
+    // Dimensions with safe fallback
+    let width = currentMount.clientWidth || 440;
+    let height = currentMount.clientHeight || 440;
 
     // Scene, Camera, Renderer
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
+    const camera = new THREE.PerspectiveCamera(45, Math.max(width / Math.max(height, 1), 0.1), 0.1, 1000);
     camera.position.z = 7;
 
-    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-    renderer.setSize(width, height);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    currentMount.appendChild(renderer.domElement);
+    let renderer;
+    try {
+      renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, powerPreference: 'high-performance' });
+      renderer.setSize(width, height);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+      currentMount.appendChild(renderer.domElement);
+    } catch (e) {
+      console.warn('Three.js WebGLRenderer init failed:', e);
+      return;
+    }
 
-    // Root Group
+    // Root Transformation Group
     const rootGroup = new THREE.Group();
     scene.add(rootGroup);
 
-    // 1. Central Tech Orb (Geodesic Sphere)
+    // 1. Central Wireframe Geodesic Orb (Royal Blue)
     const orbGeo = new THREE.IcosahedronGeometry(1.65, 2);
     const orbMat = new THREE.MeshBasicMaterial({
       color: 0x1D4ED8,
       wireframe: true,
       transparent: true,
-      opacity: 0.75
+      opacity: 0.85,
     });
     const orbMesh = new THREE.Mesh(orbGeo, orbMat);
     rootGroup.add(orbMesh);
 
-    // Inner Glowing Core
+    // Inner Glowing Core (Cyan)
     const innerGeo = new THREE.SphereGeometry(0.95, 24, 24);
     const innerMat = new THREE.MeshBasicMaterial({
       color: 0x0284C7,
       wireframe: true,
       transparent: true,
-      opacity: 0.45
+      opacity: 0.55,
     });
     const innerMesh = new THREE.Mesh(innerGeo, innerMat);
     rootGroup.add(innerMesh);
 
     // 2. Concentric Circular Rounding Motion Rings
-    // Ring 1 - Equator Ring (Royal Blue)
+    // Ring 1 - Equatorial Orbit (Royal Blue)
     const ring1Geo = new THREE.RingGeometry(2.3, 2.36, 64);
     const ring1Mat = new THREE.MeshBasicMaterial({
       color: 0x1D4ED8,
       side: THREE.DoubleSide,
       transparent: true,
-      opacity: 0.7
+      opacity: 0.85,
     });
     const ring1 = new THREE.Mesh(ring1Geo, ring1Mat);
     ring1.rotation.x = Math.PI / 2.5;
     rootGroup.add(ring1);
 
-    // Ring 2 - Tilted Orbit (Signal Yellow)
+    // Ring 2 - Inclined Orbit (Signal Yellow #FACC15)
     const ring2Geo = new THREE.RingGeometry(2.7, 2.76, 64);
     const ring2Mat = new THREE.MeshBasicMaterial({
       color: 0xFACC15,
       side: THREE.DoubleSide,
       transparent: true,
-      opacity: 0.85
+      opacity: 0.95,
     });
     const ring2 = new THREE.Mesh(ring2Geo, ring2Mat);
     ring2.rotation.y = Math.PI / 3;
     ring2.rotation.x = Math.PI / 6;
     rootGroup.add(ring2);
 
-    // Ring 3 - Outer Orbital Wave Ring (Supporting Cyan)
-    const ring3Geo = new THREE.RingGeometry(3.1, 3.15, 64);
+    // Ring 3 - Outer Orbital Wave Ring (Supporting Cyan #0284C7)
+    const ring3Geo = new THREE.RingGeometry(3.1, 3.16, 64);
     const ring3Mat = new THREE.MeshBasicMaterial({
       color: 0x0284C7,
       side: THREE.DoubleSide,
       transparent: true,
-      opacity: 0.65
+      opacity: 0.80,
     });
     const ring3 = new THREE.Mesh(ring3Geo, ring3Mat);
     ring3.rotation.z = Math.PI / 4;
     ring3.rotation.x = -Math.PI / 4;
     rootGroup.add(ring3);
 
-    // Ring 4 - Deep Navy Accent Orbit
-    const ring4Geo = new THREE.RingGeometry(3.5, 3.54, 64);
+    // Ring 4 - Deep Navy Ring (#1E293B)
+    const ring4Geo = new THREE.RingGeometry(3.5, 3.55, 64);
     const ring4Mat = new THREE.MeshBasicMaterial({
       color: 0x1E293B,
       side: THREE.DoubleSide,
       transparent: true,
-      opacity: 0.45
+      opacity: 0.60,
     });
     const ring4 = new THREE.Mesh(ring4Geo, ring4Mat);
     ring4.rotation.x = Math.PI / 5;
@@ -104,10 +128,10 @@ export default function ThreeHeroCanvas() {
     // 3. Orbiting Satellite Nodes on the rings
     const satellites = [];
     const satConfigs = [
-      { radius: 2.33, speed: 1.2, color: 0x1D4ED8, size: 0.12, ring: ring1 },
-      { radius: 2.73, speed: -0.9, color: 0xFACC15, size: 0.14, ring: ring2 },
-      { radius: 3.12, speed: 0.7, color: 0x0284C7, size: 0.13, ring: ring3 },
-      { radius: 3.52, speed: -0.6, color: 0x1E293B, size: 0.11, ring: ring4 },
+      { radius: 2.33, speed: 1.2, color: 0x1D4ED8, size: 0.13, ring: ring1 },
+      { radius: 2.73, speed: -0.9, color: 0xFACC15, size: 0.15, ring: ring2 },
+      { radius: 3.13, speed: 0.7, color: 0x0284C7, size: 0.14, ring: ring3 },
+      { radius: 3.52, speed: -0.6, color: 0x1E293B, size: 0.12, ring: ring4 },
     ];
 
     satConfigs.forEach((cfg) => {
@@ -133,9 +157,9 @@ export default function ThreeHeroCanvas() {
     particleGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
     const particleMat = new THREE.PointsMaterial({
       color: 0x1D4ED8,
-      size: 0.07,
+      size: 0.08,
       transparent: true,
-      opacity: 0.75
+      opacity: 0.85,
     });
     const particles = new THREE.Points(particleGeo, particleMat);
     rootGroup.add(particles);
@@ -151,24 +175,46 @@ export default function ThreeHeroCanvas() {
       mouseX = ((e.clientX - rect.left) / rect.width - 0.5) * 0.8;
       mouseY = ((e.clientY - rect.top) / rect.height - 0.5) * 0.8;
     };
-    window.addEventListener('mousemove', onMouseMove);
+    window.addEventListener('mousemove', onMouseMove, { passive: true });
 
-    const handleResize = () => {
-      if (!currentMount) return;
-      const newWidth = currentMount.clientWidth;
-      const newHeight = currentMount.clientHeight;
+    // Robust Resizing with ResizeObserver
+    const updateSize = () => {
+      if (!currentMount || !renderer) return;
+      const newWidth = currentMount.clientWidth || 440;
+      const newHeight = currentMount.clientHeight || 440;
+      if (newWidth === 0 || newHeight === 0) return;
       camera.aspect = newWidth / newHeight;
       camera.updateProjectionMatrix();
       renderer.setSize(newWidth, newHeight);
+      renderer.render(scene, camera);
     };
-    window.addEventListener('resize', handleResize);
+
+    let resizeObserver = null;
+    if (typeof ResizeObserver !== 'undefined') {
+      resizeObserver = new ResizeObserver(() => updateSize());
+      resizeObserver.observe(currentMount);
+    }
+    window.addEventListener('resize', updateSize, { passive: true });
+
+    // Handle context loss gracefully
+    const handleContextLost = (e) => {
+      e.preventDefault();
+      cancelAnimationFrame(animId);
+    };
+    const handleContextRestored = () => {
+      updateSize();
+      if (!prefersReducedMotion && isRunning) {
+        animId = requestAnimationFrame(animate);
+      }
+    };
+    renderer.domElement.addEventListener('webglcontextlost', handleContextLost, false);
+    renderer.domElement.addEventListener('webglcontextrestored', handleContextRestored, false);
 
     // Animation Loop
-    let animId;
     let clock = new THREE.Clock();
 
     const animate = () => {
-      animId = requestAnimationFrame(animate);
+      if (!isRunning) return;
       const elapsed = clock.getElapsedTime();
 
       // Smooth mouse follow
@@ -200,18 +246,34 @@ export default function ThreeHeroCanvas() {
       particles.rotation.y = -elapsed * 0.08;
 
       renderer.render(scene, camera);
+
+      if (!prefersReducedMotion && isRunning) {
+        animId = requestAnimationFrame(animate);
+      }
     };
 
-    animate();
+    // Render single frame immediately, then loop if not reduced motion
+    renderer.render(scene, camera);
+    if (!prefersReducedMotion) {
+      animId = requestAnimationFrame(animate);
+    }
 
     return () => {
+      isRunning = false;
       cancelAnimationFrame(animId);
       window.removeEventListener('mousemove', onMouseMove);
-      window.removeEventListener('resize', handleResize);
-      if (currentMount && renderer.domElement) {
-        currentMount.removeChild(renderer.domElement);
+      window.removeEventListener('resize', updateSize);
+      if (resizeObserver) resizeObserver.disconnect();
+      if (renderer) {
+        if (renderer.domElement) {
+          renderer.domElement.removeEventListener('webglcontextlost', handleContextLost);
+          renderer.domElement.removeEventListener('webglcontextrestored', handleContextRestored);
+          if (currentMount.contains(renderer.domElement)) {
+            currentMount.removeChild(renderer.domElement);
+          }
+        }
+        renderer.dispose();
       }
-      renderer.dispose();
       orbGeo.dispose();
       orbMat.dispose();
       innerGeo.dispose();
@@ -227,11 +289,25 @@ export default function ThreeHeroCanvas() {
       particleGeo.dispose();
       particleMat.dispose();
     };
-  }, []);
+  }, [hasWebGL]);
+
+  if (!hasWebGL) {
+    // Graceful CSS 3D fallback if WebGL is unavailable
+    return (
+      <div className="three-hero-fallback" aria-label="3D Technology Classroom Core">
+        <div className="fallback-orb">
+          <div className="fallback-ring fallback-ring--1" />
+          <div className="fallback-ring fallback-ring--2" />
+          <div className="fallback-ring fallback-ring--3" />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div
       ref={mountRef}
+      className="three-hero-viewport"
       style={{
         width: '100%',
         height: '100%',
@@ -239,6 +315,7 @@ export default function ThreeHeroCanvas() {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
+        overflow: 'hidden',
       }}
       aria-label="3D Technology Classroom Core with Circular Rounding Motions"
     />
