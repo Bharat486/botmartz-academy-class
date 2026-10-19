@@ -47,9 +47,9 @@
   gap: 16px;
   margin-bottom: 28px;
   padding: 16px 20px;
-  background: var(--blue-light);
+  background: var(--light-blue-accent);
   border-radius: var(--radius-md);
-  border: 1px solid rgba(29, 78, 216, 0.15);
+  border: 1.5px solid var(--soft-border);
 }
 
 .dsa__batch-item {
@@ -60,14 +60,14 @@
 
 .dsa__batch-label {
   font-size: var(--text-xs);
-  color: var(--navy-light);
-  font-weight: 500;
+  color: var(--muted-blue-gray);
+  font-weight: 600;
 }
 
 .dsa__batch-value {
   font-size: var(--text-sm);
-  font-weight: 700;
-  color: var(--royal-blue);
+  font-weight: 800;
+  color: var(--bright-blue);
 }
 
 .dsa__actions {
@@ -80,12 +80,17 @@
 .dsa__card {
   padding: 0;
   overflow: hidden;
+  background: var(--white) !important;
+  border: 1.5px solid var(--soft-border) !important;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--card-shadow);
 }
 
 .dsa__card-header {
-  background: var(--deep-navy);
+  background: var(--brand-gradient);
   color: var(--white);
-  padding: 28px 28px 20px;
+  padding: 28px 28px 22px;
+  border-bottom: 1px solid var(--soft-border);
 }
 
 .dsa__card-header h3 {
@@ -96,11 +101,12 @@
 
 .dsa__card-header p {
   font-size: var(--text-sm);
-  opacity: 0.7;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .dsa__card-body {
   padding: 24px 28px 28px;
+  background: var(--white);
 }
 
 .dsa__card-price {
@@ -112,7 +118,7 @@
 
 .dsa__card-old {
   font-size: var(--text-lg);
-  color: var(--navy-light);
+  color: var(--muted-blue-gray);
   text-decoration: line-through;
 }
 
@@ -131,10 +137,10 @@
 
 .dsa__card-list li {
   font-size: var(--text-sm);
-  font-weight: 500;
+  font-weight: 600;
   color: var(--deep-navy);
-  padding: 6px 0;
-  border-bottom: 1px solid var(--border-grey);
+  padding: 8px 0;
+  border-bottom: 1px solid var(--soft-border);
 }
 
 .dsa__card-list li:last-child {

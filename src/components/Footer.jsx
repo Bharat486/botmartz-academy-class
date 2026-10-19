@@ -59,7 +59,7 @@ export default function Footer({ onEnrollClick }) {
           <div className="footer-col">
             <h4 className="footer-heading">PLATFORM</h4>
             <ul className="footer-nav">
-              <li><a href="#weekly-schedule">Live Classes</a></li>
+              <li><a href="#learning-hub">Live Classes</a></li>
               <li><a href="#learning-hub">Student Dashboard</a></li>
               <li><a href="#mentors">Mentor Connect</a></li>
               <li><a href="#platform-features">Recordings</a></li>
@@ -75,7 +75,7 @@ export default function Footer({ onEnrollClick }) {
               <li><a href="#trust">About Us</a></li>
               <li><a href="#corporate-training">Careers</a></li>
               <li><a href="#testimonials">Student Reviews</a></li>
-              <li><a href="#faq">Help & Contact</a></li>
+              <li><a href="#contact">Help & Contact</a></li>
               <li><a href="#">Privacy Policy</a></li>
               <li><a href="#">Terms of Service</a></li>
             </ul>

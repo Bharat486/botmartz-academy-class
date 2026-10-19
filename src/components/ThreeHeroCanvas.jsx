@@ -52,10 +52,10 @@ export default function ThreeHeroCanvas() {
     const rootGroup = new THREE.Group();
     scene.add(rootGroup);
 
-    // 1. Central Wireframe Geodesic Orb (Royal Blue)
+    // 1. Central Wireframe Geodesic Orb (Bright Blue #008DD2)
     const orbGeo = new THREE.IcosahedronGeometry(1.65, 2);
     const orbMat = new THREE.MeshBasicMaterial({
-      color: 0x1D4ED8,
+      color: 0x008DD2,
       wireframe: true,
       transparent: true,
       opacity: 0.85,
@@ -63,10 +63,10 @@ export default function ThreeHeroCanvas() {
     const orbMesh = new THREE.Mesh(orbGeo, orbMat);
     rootGroup.add(orbMesh);
 
-    // Inner Glowing Core (Cyan)
+    // Inner Glowing Core (Cyan #08B5E8)
     const innerGeo = new THREE.SphereGeometry(0.95, 24, 24);
     const innerMat = new THREE.MeshBasicMaterial({
-      color: 0x0284C7,
+      color: 0x08B5E8,
       wireframe: true,
       transparent: true,
       opacity: 0.55,
@@ -75,10 +75,10 @@ export default function ThreeHeroCanvas() {
     rootGroup.add(innerMesh);
 
     // 2. Concentric Circular Rounding Motion Rings
-    // Ring 1 - Equatorial Orbit (Royal Blue)
+    // Ring 1 - Equatorial Orbit (Bright Blue #008DD2)
     const ring1Geo = new THREE.RingGeometry(2.3, 2.36, 64);
     const ring1Mat = new THREE.MeshBasicMaterial({
-      color: 0x1D4ED8,
+      color: 0x008DD2,
       side: THREE.DoubleSide,
       transparent: true,
       opacity: 0.85,
@@ -87,10 +87,10 @@ export default function ThreeHeroCanvas() {
     ring1.rotation.x = Math.PI / 2.5;
     rootGroup.add(ring1);
 
-    // Ring 2 - Inclined Orbit (Signal Yellow #FACC15)
+    // Ring 2 - Inclined Orbit (Cyan #08B5E8)
     const ring2Geo = new THREE.RingGeometry(2.7, 2.76, 64);
     const ring2Mat = new THREE.MeshBasicMaterial({
-      color: 0xFACC15,
+      color: 0x08B5E8,
       side: THREE.DoubleSide,
       transparent: true,
       opacity: 0.95,
@@ -100,10 +100,10 @@ export default function ThreeHeroCanvas() {
     ring2.rotation.x = Math.PI / 6;
     rootGroup.add(ring2);
 
-    // Ring 3 - Outer Orbital Wave Ring (Supporting Cyan #0284C7)
+    // Ring 3 - Outer Orbital Wave Ring (Dark Blue #075985)
     const ring3Geo = new THREE.RingGeometry(3.1, 3.16, 64);
     const ring3Mat = new THREE.MeshBasicMaterial({
-      color: 0x0284C7,
+      color: 0x075985,
       side: THREE.DoubleSide,
       transparent: true,
       opacity: 0.80,
@@ -113,10 +113,10 @@ export default function ThreeHeroCanvas() {
     ring3.rotation.x = -Math.PI / 4;
     rootGroup.add(ring3);
 
-    // Ring 4 - Deep Navy Ring (#1E293B)
+    // Ring 4 - Deep Navy Ring (#082D4B)
     const ring4Geo = new THREE.RingGeometry(3.5, 3.55, 64);
     const ring4Mat = new THREE.MeshBasicMaterial({
-      color: 0x1E293B,
+      color: 0x082D4B,
       side: THREE.DoubleSide,
       transparent: true,
       opacity: 0.60,
@@ -128,10 +128,10 @@ export default function ThreeHeroCanvas() {
     // 3. Orbiting Satellite Nodes on the rings
     const satellites = [];
     const satConfigs = [
-      { radius: 2.33, speed: 1.2, color: 0x1D4ED8, size: 0.13, ring: ring1 },
-      { radius: 2.73, speed: -0.9, color: 0xFACC15, size: 0.15, ring: ring2 },
-      { radius: 3.13, speed: 0.7, color: 0x0284C7, size: 0.14, ring: ring3 },
-      { radius: 3.52, speed: -0.6, color: 0x1E293B, size: 0.12, ring: ring4 },
+      { radius: 2.33, speed: 1.2, color: 0x008DD2, size: 0.13, ring: ring1 },
+      { radius: 2.73, speed: -0.9, color: 0x08B5E8, size: 0.15, ring: ring2 },
+      { radius: 3.13, speed: 0.7, color: 0x075985, size: 0.14, ring: ring3 },
+      { radius: 3.52, speed: -0.6, color: 0x082D4B, size: 0.12, ring: ring4 },
     ];
 
     satConfigs.forEach((cfg) => {
@@ -156,7 +156,7 @@ export default function ThreeHeroCanvas() {
     const particleGeo = new THREE.BufferGeometry();
     particleGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
     const particleMat = new THREE.PointsMaterial({
-      color: 0x1D4ED8,
+      color: 0x008DD2,
       size: 0.08,
       transparent: true,
       opacity: 0.85,

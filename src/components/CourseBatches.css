@@ -1,6 +1,51 @@
+/* ========================================================
+   Flagship Course Bootcamps Section (Matching Reference Design)
+   ======================================================== */
+
 .courses-section {
   background: transparent;
   position: relative;
+  padding: 60px 0 80px;
+}
+
+/* Top Urgency Header Strip */
+.seats-urgency-strip {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.seats-urgency-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 18px;
+  border-radius: 999px;
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  color: #DC2626;
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  box-shadow: 0 2px 10px rgba(239, 68, 68, 0.08);
+}
+
+.urgency-pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #EF4444;
+  box-shadow: 0 0 8px #EF4444;
+  animation: pulse 1.6s infinite;
+}
+
+.urgency-icon {
+  font-size: 14px;
+}
+
+.urgency-bold {
+  font-weight: 800;
+  letter-spacing: 0.04em;
 }
 
 .section-badge-wrap {
@@ -8,186 +53,695 @@
   margin-bottom: 12px;
 }
 
-.courses-filter {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 36px;
-}
-
-.filter-btn {
-  padding: 8px 16px;
-  border-radius: 999px;
-  font-size: var(--text-xs);
-  font-weight: 700;
-  color: var(--deep-navy);
-  background: var(--grid-grey);
-  border: 1.5px solid var(--border-grey);
-  transition: all var(--duration-fast) var(--ease-out);
-}
-
-.filter-btn:hover {
-  border-color: var(--royal-blue);
-  color: var(--royal-blue);
-}
-
-.filter-btn--active {
-  background: var(--deep-navy);
-  color: var(--white);
-  border-color: var(--deep-navy);
-  box-shadow: 0 4px 12px rgba(30, 41, 59, 0.15);
-}
-
-.courses-grid {
+/* 2 Flagship Cards Grid */
+.flagship-courses-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 36px;
+  margin-top: 40px;
+  align-items: stretch;
   opacity: 0;
   transform: translateY(30px);
-  transition: all 0.6s var(--ease-out);
+  transition: all 0.7s var(--ease-out);
 }
 
-.courses-grid--visible {
+.flagship-courses-grid--visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-.course-card {
+/* Flagship Card Container */
+.flagship-card {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 0;
-  overflow: hidden;
   height: 100%;
+  background: var(--white);
+  border: 1.5px solid var(--soft-border);
+  border-radius: 28px;
+  padding: 32px;
+  box-shadow: 0 10px 35px rgba(8, 45, 75, 0.06);
+  color: var(--deep-navy);
+  transition: transform 0.3s var(--ease-out),
+              box-shadow 0.3s var(--ease-out),
+              border-color 0.3s var(--ease-out);
+  position: relative;
 }
 
-.course-card__header {
-  padding: 24px 24px 16px;
-  border-bottom: 1px solid var(--border-grey);
+.flagship-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--bright-blue);
+  box-shadow: 0 20px 48px rgba(0, 141, 210, 0.18);
 }
 
-.course-card__top {
+/* Top Category & Status Header */
+.flagship-card__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: nowrap;
+}
+
+.flagship-card__category {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin-bottom: 14px;
+  gap: 10px;
 }
 
-.course-card__tag {
-  font-size: var(--text-xs);
+.category-icon-box {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--light-blue-accent);
+  color: var(--bright-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
   font-weight: 800;
-  padding: 4px 10px;
-  border-radius: var(--radius-sm);
-  border: 1.5px solid;
-  letter-spacing: 0.05em;
+  font-family: var(--font-mono);
+  border: 1px solid var(--soft-border);
 }
 
-.course-card__title {
-  font-size: var(--text-xl);
-  font-weight: 800;
-  line-height: 1.3;
-  margin-bottom: 10px;
+.category-name {
+  font-size: var(--text-sm);
+  font-weight: 700;
   color: var(--deep-navy);
 }
 
-.course-card__desc {
-  font-size: var(--text-sm);
-  color: var(--navy-light);
-  line-height: 1.6;
+.flagship-card__status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 14px;
+  border-radius: 999px;
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
 }
 
-.course-card__body {
-  padding: 20px 24px;
-  flex-grow: 1;
+.flagship-card__status-pill--enrolling {
+  background: #FEF3C7;
+  border: 1px solid #FCD34D;
+  color: #92400E;
 }
 
-.course-card__highlights {
+.flagship-card__status-pill--batch1 {
+  background: #FEF3C7;
+  border: 1px solid #FCD34D;
+  color: #92400E;
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #F59E0B;
+}
+
+/* Visual Graphic Banner Container - STRICTLY LOCKED TO EXACT 230px HEIGHT */
+.flagship-card__banner-wrap {
+  position: relative !important;
+  width: 100% !important;
+  height: 230px !important;
+  min-height: 230px !important;
+  max-height: 230px !important;
+  border-radius: 20px;
+  overflow: hidden !important;
+  margin-bottom: 24px;
+  border: 1.5px solid var(--soft-border);
+  background: #0B1120;
+  box-sizing: border-box !important;
+}
+
+.flagship-card__banner-wrap--sim,
+.flagship-card__banner-wrap--image {
+  position: relative !important;
+  width: 100% !important;
+  height: 230px !important;
+  min-height: 230px !important;
+  max-height: 230px !important;
+  overflow: hidden !important;
+}
+
+.flagship-card__banner-wrap--image .flagship-card__banner-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.flagship-card:hover .flagship-card__banner-img {
+  transform: scale(1.04);
+}
+
+.flagship-card__vis-container {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  overflow: hidden !important;
+}
+
+.flagship-card__vis-container--3d {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: radial-gradient(ellipse at 50% 50%, rgba(2, 132, 199, 0.15) 0%, rgba(11, 17, 32, 0.95) 75%) !important;
+  pointer-events: none;
+}
+
+.flagship-card__vis-container--3d .c3d-scene-root {
+  transform: scale(0.65) translateY(-14px) !important;
+  transform-origin: center center !important;
+}
+
+/* Bottom Controls on Banner - ALWAYS ABSOLUTELY PINNED AT THE BOTTOM */
+.flagship-banner__bottom-bar {
+  position: absolute !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  padding: 6px 12px !important;
+  background: linear-gradient(180deg, transparent 0%, rgba(6, 10, 18, 0.92) 20%, rgba(6, 10, 18, 0.98) 100%) !important;
+  border-top: 1px solid rgba(56, 189, 248, 0.16) !important;
+  z-index: 10 !important;
+  height: 42px !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  box-sizing: border-box !important;
+  pointer-events: auto !important;
+}
+
+/* Bottom Actions Row on Banner */
+.banner-bottom-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Compact Mode Switcher (Sim vs Art) in Banner Bottom Bar */
+.flagship-banner__mode-toggle {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(11, 17, 32, 0.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 2px 3px;
+  border-radius: 999px;
+  border: 1px solid rgba(56, 189, 248, 0.28);
+}
+
+.mode-toggle-btn {
+  background: transparent;
+  border: none;
+  color: #94A3B8;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.mode-toggle-btn:hover {
+  color: #F8FAFC;
+}
+
+.mode-toggle-btn--active {
+  background: #008DD2;
+  color: #FFFFFF !important;
+  box-shadow: 0 1px 6px rgba(0, 141, 210, 0.4);
+}
+
+/* Glassmorphism Tags Overlay on Banner */
+.flagship-banner__tags-overlay {
+  position: absolute;
+  top: 14px;
+  left: 14px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  margin-bottom: 20px;
+  gap: 5px;
+  z-index: 2;
+  pointer-events: none;
 }
 
-.highlight-pill {
-  font-size: var(--text-xs);
-  color: var(--deep-navy);
-  font-weight: 500;
-  display: flex;
+.banner-tag-item {
+  background: rgba(11, 17, 32, 0.78);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #F8FAFC;
+  display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 5px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
-.pill-check {
-  color: #16a34a;
-  font-weight: bold;
+.tag-bullet {
+  color: #38BDF8;
+  font-size: 12px;
 }
 
-.course-card__meta {
-  display: flex;
-  justify-content: space-between;
-  padding-top: 14px;
-  border-top: 1px dashed var(--border-grey);
-  font-size: var(--text-xs);
-  color: var(--navy-light);
-}
 
-.meta-item {
+.banner-seats-badge {
+  background: rgba(11, 17, 32, 0.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #E2E8F0;
   display: flex;
   align-items: center;
   gap: 6px;
-  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
-.course-card__footer {
-  padding: 18px 24px 24px;
-  background: var(--grid-grey);
+.seats-icon {
+  font-size: 13px;
+}
+
+.banner-preview-btn {
+  background: #08B5E8;
+  border: none;
+  border-radius: 999px;
+  padding: 6px 16px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #FFFFFF;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  border-top: 1.5px solid var(--border-grey);
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.2s var(--ease-out);
+  box-shadow: 0 4px 14px rgba(8, 181, 232, 0.45);
 }
 
-.course-card__price-wrap {
+.banner-preview-btn:hover {
+  background: #008DD2;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 141, 210, 0.6);
+}
+
+.play-icon {
+  font-size: 10px;
+}
+
+/* Main Course Information */
+.flagship-card__main-info {
+  margin-bottom: 20px;
+}
+
+.flagship-card__title {
+  font-size: var(--text-2xl);
+  font-weight: 800;
+  color: var(--deep-navy);
+  margin-bottom: 8px;
+  line-height: 1.25;
+}
+
+.flagship-card__subtitle {
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--bright-blue);
+  margin-bottom: 12px;
+  line-height: 1.45;
+}
+
+.flagship-card__desc {
+  font-size: var(--text-sm);
+  color: var(--muted-blue-gray);
+  line-height: 1.6;
+}
+
+/* Capstone Deliverable Card */
+.flagship-capstone-box {
+  background: var(--light-blue-accent);
+  border: 1.5px solid var(--soft-border);
+  border-radius: 16px;
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 24px;
+  cursor: pointer;
+  transition: all 0.25s var(--ease-out);
+}
+
+.flagship-capstone-box:hover {
+  border-color: var(--bright-blue);
+  background: rgba(8, 181, 232, 0.16);
+  transform: translateX(3px);
+}
+
+.capstone-icon-box {
+  color: var(--bright-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.capstone-text {
   display: flex;
   flex-direction: column;
+  gap: 2px;
+  flex-grow: 1;
 }
 
-.price-label {
+.capstone-label {
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--muted-blue-gray);
+  letter-spacing: 0.06em;
+}
+
+.capstone-title {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--deep-navy);
+}
+
+.capstone-arrow {
+  color: var(--bright-blue);
+  display: flex;
+  align-items: center;
+  transition: transform 0.2s ease;
+}
+
+.flagship-capstone-box:hover .capstone-arrow {
+  transform: translateX(4px);
+}
+
+/* Focus Topics 2-Column Checklist */
+.flagship-focus-wrap {
+  margin-bottom: 28px;
+}
+
+.focus-header-label {
   font-size: 11px;
-  color: var(--navy-light);
-  font-weight: 600;
-  text-transform: uppercase;
+  font-weight: 800;
+  color: var(--muted-blue-gray);
+  letter-spacing: 0.06em;
+  margin-bottom: 12px;
 }
 
-.course-card__price {
+.focus-topics-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 20px;
+}
+
+.focus-col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.focus-topic-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--deep-navy);
+}
+
+.focus-check-circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(8, 181, 232, 0.12);
+  color: var(--bright-blue);
+  border: 1.5px solid var(--bright-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+/* Card Footer: Pricing and CTA Button */
+.flagship-card__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20px;
+  border-top: 1px solid var(--soft-border);
+  margin-top: auto;
+  gap: 16px;
+}
+
+.flagship-pricing {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.current-price {
   font-size: var(--text-2xl);
   font-weight: 900;
-  color: var(--royal-blue);
+  color: var(--deep-navy);
   font-family: var(--font-mono);
 }
 
-.course-card__enroll {
-  padding: 10px 20px;
+.original-price {
   font-size: var(--text-sm);
-  min-height: 42px;
+  text-decoration: line-through;
+  color: var(--muted-blue-gray);
 }
 
-@media (max-width: 1199px) {
-  .courses-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+.pricing-note {
+  font-size: 11px;
+  color: var(--muted-blue-gray);
+  font-weight: 600;
 }
 
-@media (max-width: 767px) {
-  .courses-grid {
+.flagship-enroll-btn {
+  padding: 12px 24px;
+  border-radius: 999px;
+  font-size: var(--text-sm);
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 16px rgba(0, 141, 210, 0.28);
+  white-space: nowrap;
+}
+
+/* ========================================================
+   Dark Mode Specific Overrides for Flagship Course Cards
+   ======================================================== */
+
+body.dark-mode .flagship-card {
+  background: #111C35 !important;
+  border-color: rgba(56, 189, 248, 0.2) !important;
+  color: #F8FAFC !important;
+}
+
+body.dark-mode .flagship-card:hover {
+  border-color: #38BDF8 !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7), 0 0 20px rgba(8, 181, 232, 0.25) !important;
+}
+
+body.dark-mode .flagship-card__title,
+body.dark-mode .category-name,
+body.dark-mode .capstone-title,
+body.dark-mode .focus-topic-item,
+body.dark-mode .current-price {
+  color: #F8FAFC !important;
+}
+
+body.dark-mode .category-icon-box {
+  background: rgba(8, 181, 232, 0.16) !important;
+  border-color: rgba(56, 189, 248, 0.25) !important;
+  color: #38BDF8 !important;
+}
+
+body.dark-mode .flagship-card__status-pill--enrolling,
+body.dark-mode .flagship-card__status-pill--batch1 {
+  background: rgba(245, 158, 11, 0.15) !important;
+  border-color: rgba(245, 158, 11, 0.3) !important;
+  color: #FBBF24 !important;
+}
+
+body.dark-mode .flagship-capstone-box {
+  background: #0B1120 !important;
+  border-color: rgba(56, 189, 248, 0.2) !important;
+}
+
+body.dark-mode .flagship-capstone-box:hover {
+  background: rgba(8, 181, 232, 0.14) !important;
+  border-color: #38BDF8 !important;
+}
+
+body.dark-mode .seats-urgency-pill {
+  background: rgba(239, 68, 68, 0.14) !important;
+  border-color: rgba(239, 68, 68, 0.3) !important;
+  color: #F87171 !important;
+}
+
+body.dark-mode .flagship-banner__mode-toggle {
+  background: rgba(15, 23, 42, 0.85) !important;
+  border-color: rgba(56, 189, 248, 0.25) !important;
+}
+
+body.dark-mode .mode-toggle-btn {
+  color: #94A3B8 !important;
+}
+
+body.dark-mode .mode-toggle-btn:hover {
+  color: #F8FAFC !important;
+}
+
+body.dark-mode .mode-toggle-btn--active {
+  background: #008DD2 !important;
+  color: #FFFFFF !important;
+}
+
+body.dark-mode .flagship-card__footer {
+  border-top-color: rgba(56, 189, 248, 0.18) !important;
+}
+
+/* Clickable Banner & Explore Overlay */
+.flagship-card__banner-wrap--clickable {
+  cursor: pointer;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.flagship-card__banner-wrap--clickable:hover {
+  border-color: #38BDF8 !important;
+  box-shadow: 0 8px 24px rgba(56, 189, 248, 0.25);
+}
+
+.banner-explore-pill-overlay {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  z-index: 15;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #38BDF8;
+  background: rgba(7, 11, 20, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  border-radius: 9999px;
+  letter-spacing: 0.02em;
+  transition: all 0.2s ease;
+  pointer-events: none;
+}
+
+.flagship-card__banner-wrap--clickable:hover .banner-explore-pill-overlay {
+  background: #0284C7;
+  color: #FFFFFF;
+  border-color: #38BDF8;
+  transform: scale(1.04);
+}
+
+.explore-pill-arrow {
+  transition: transform 0.2s ease;
+}
+
+.flagship-card__banner-wrap--clickable:hover .explore-pill-arrow {
+  transform: translateX(3px);
+}
+
+/* Clickable Title */
+.flagship-card__title--clickable {
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.flagship-card__title--clickable:hover {
+  color: var(--bright-blue) !important;
+}
+
+/* Footer Actions */
+.flagship-card__actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.flagship-details-btn {
+  padding: 10px 18px;
+  font-size: 13px;
+  font-weight: 700;
+  border-radius: 12px;
+  white-space: nowrap;
+}
+
+body.dark-mode .flagship-details-btn {
+  color: #38BDF8;
+  border-color: rgba(56, 189, 248, 0.4);
+}
+
+body.dark-mode .flagship-details-btn:hover {
+  background: rgba(56, 189, 248, 0.12);
+}
+
+/* ========================================================
+   Responsive Breakpoints
+   ======================================================== */
+
+@media (max-width: 960px) {
+  .flagship-courses-grid {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 30px;
   }
-  
-  .course-card__header,
-  .course-card__body,
-  .course-card__footer {
-    padding: 18px;
+}
+
+@media (max-width: 600px) {
+  .flagship-card {
+    padding: 24px 18px;
+    border-radius: 20px;
+  }
+
+  .flagship-card__banner-wrap {
+    height: 190px;
+  }
+
+  .flagship-card__title {
+    font-size: var(--text-xl);
+  }
+
+  .focus-topics-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .flagship-card__footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .flagship-enroll-btn {
+    width: 100%;
+    justify-content: center;
   }
 }

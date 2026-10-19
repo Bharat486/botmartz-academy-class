@@ -3,6 +3,8 @@
   position: relative;
 }
 
+
+
 .corp-banner {
   background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
   color: var(--white);

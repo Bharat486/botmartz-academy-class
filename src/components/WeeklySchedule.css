@@ -1,10 +1,14 @@
 .schedule-section {
-  background: rgba(245, 245, 245, 0.65);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  border-top: 1px solid var(--border-grey);
-  border-bottom: 1px solid var(--border-grey);
+  background: transparent;
+  border-top: 1px solid var(--soft-border);
+  border-bottom: 1px solid var(--soft-border);
 }
+
+body.dark-mode .schedule-section {
+  border-top-color: rgba(56, 189, 248, 0.15) !important;
+  border-bottom-color: rgba(56, 189, 248, 0.15) !important;
+}
+
 
 .schedule-list {
   display: flex;
@@ -28,7 +32,17 @@
   justify-content: space-between;
   padding: 24px 32px;
   background: var(--white);
+  border: 1.5px solid var(--soft-border);
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 16px rgba(8, 45, 75, 0.04);
   gap: 24px;
+  transition: transform var(--duration-md) var(--ease-out), box-shadow var(--duration-md);
+}
+
+.schedule-row:hover {
+  transform: translateY(-3px);
+  border-color: var(--bright-blue);
+  box-shadow: 0 10px 24px rgba(0, 141, 210, 0.1);
 }
 
 .schedule-time-box {
@@ -38,9 +52,9 @@
   justify-content: center;
   min-width: 110px;
   padding: 12px 16px;
-  background: var(--grid-grey);
+  background: var(--light-blue-accent);
   border-radius: var(--radius-md);
-  border: 1.5px solid var(--border-grey);
+  border: 1.5px solid var(--soft-border);
   text-align: center;
 }
 
@@ -54,7 +68,7 @@
 .time-day {
   font-size: 11px;
   font-weight: 800;
-  color: var(--royal-blue);
+  color: var(--bright-blue);
   letter-spacing: 0.05em;
 }
 
@@ -74,7 +88,7 @@
   align-items: center;
   gap: 8px;
   font-size: var(--text-sm);
-  color: var(--navy-light);
+  color: var(--muted-blue-gray);
 }
 
 .session-meta strong {
@@ -82,7 +96,7 @@
 }
 
 .dot-sep {
-  color: var(--border-grey);
+  color: var(--soft-border);
 }
 
 .schedule-action {
@@ -101,11 +115,11 @@
   gap: 6px;
   font-size: var(--text-xs);
   font-weight: 800;
-  color: #16a34a;
-  background: #dcfce7;
+  color: #0369a1;
+  background: var(--light-blue-accent);
   padding: 6px 12px;
   border-radius: 999px;
-  border: 1px solid #86efac;
+  border: 1px solid var(--bright-blue);
 }
 
 .btn-join {
@@ -115,9 +129,9 @@
 }
 
 .btn-reminder-set {
-  background: #f0fdf4;
-  color: #16a34a;
-  border: 2px solid #86efac;
+  background: var(--light-blue-accent);
+  color: var(--bright-blue);
+  border: 1.5px solid var(--bright-blue);
   font-weight: 700;
   min-height: 44px;
   padding: 10px 20px;

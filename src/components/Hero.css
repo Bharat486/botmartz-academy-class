@@ -45,7 +45,7 @@
 
 .hero__desc {
   font-size: var(--text-base);
-  color: var(--navy-light);
+  color: var(--muted-blue-gray);
   line-height: 1.7;
   margin-bottom: 28px;
   max-width: 580px;
@@ -57,9 +57,10 @@
   gap: 12px;
   margin-bottom: 30px;
   padding: 16px 20px;
-  background: var(--grid-grey);
+  background: var(--white);
   border-radius: var(--radius-md);
-  border: 1.5px solid var(--border-grey);
+  border: 1.5px solid var(--soft-border);
+  box-shadow: var(--card-shadow);
 }
 
 .hero__stat {
@@ -71,13 +72,13 @@
 .hero__stat-num {
   font-size: var(--text-2xl);
   font-weight: 900;
-  color: var(--royal-blue);
+  color: var(--bright-blue);
   font-family: var(--font-mono);
 }
 
 .hero__stat-label {
   font-size: 11px;
-  color: var(--navy-light);
+  color: var(--muted-blue-gray);
   font-weight: 600;
 }
 
@@ -96,24 +97,26 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  background: #f0fdf4;
-  border: 1.5px solid #86efac;
-  padding: 8px 16px;
+  background: var(--light-blue-accent);
+  border: 1.5px solid var(--soft-border);
+  padding: 8px 18px;
   border-radius: 999px;
   font-size: var(--text-xs);
-  color: #166534;
+  color: var(--dark-blue);
+  box-shadow: 0 2px 8px rgba(8, 45, 75, 0.04);
 }
 
 .ticker-live-dot {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #22c55e;
+  background: var(--cyan);
+  box-shadow: 0 0 8px rgba(8, 181, 232, 0.6);
   animation: pulse-glow 1.5s infinite;
 }
 
 .ticker-text strong {
-  color: #15803d;
+  color: var(--bright-blue);
 }
 
 /* Right Visual */
@@ -152,24 +155,23 @@
   justify-content: center;
 }
 
-/* Floating 3D Dimensional Cards (Sleek Dark Glass) */
+/* Floating 3D Dimensional Cards (Modern Pure White) */
 .hero__float-card {
   position: absolute;
-  background: #1E293B;
-  color: #FFFFFF;
-  border: 1.5px solid #334155;
-  border-radius: 12px;
-  box-shadow: 0 12px 36px rgba(15, 23, 42, 0.35), 0 4px 12px rgba(29, 78, 216, 0.15);
+  background: var(--white);
+  color: var(--deep-navy);
+  border: 1.5px solid var(--soft-border);
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(8, 45, 75, 0.08), 0 2px 6px rgba(8, 45, 75, 0.04);
   z-index: 4;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
   pointer-events: auto;
   transition: transform var(--duration-fast), box-shadow var(--duration-fast);
 }
 
 .hero__float-card:hover {
-  transform: translateY(-4px) scale(1.03);
-  box-shadow: 0 16px 44px rgba(15, 23, 42, 0.45), 0 0 20px rgba(29, 78, 216, 0.3);
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 16px 36px rgba(0, 141, 210, 0.16);
+  border-color: rgba(0, 141, 210, 0.4);
 }
 
 /* Card 1: Top-left code snippet */
@@ -185,7 +187,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid #334155;
+  border-bottom: 1px solid var(--soft-border);
   padding-bottom: 8px;
   margin-bottom: 8px;
 }
@@ -201,32 +203,32 @@
   border-radius: 50%;
 }
 
-.code-dots .red { background: #ef4444; }
-.code-dots .yellow { background: #f59e0b; }
-.code-dots .green { background: #10b981; }
+.code-dots .red { background: var(--coral-red); }
+.code-dots .yellow { background: var(--cyan); }
+.code-dots .green { background: var(--bright-blue); }
 
 .code-filename {
   font-size: 10px;
   font-family: var(--font-mono);
-  color: #94a3b8;
+  color: var(--muted-blue-gray);
 }
 
 .hero__code {
   font-family: var(--font-mono);
   font-size: 11px;
   line-height: 1.5;
-  color: #e2e8f0;
+  color: var(--deep-navy);
   margin: 0;
   overflow: hidden;
 }
 
 .ck-kw {
-  color: #38bdf8;
+  color: var(--bright-blue);
   font-weight: 700;
 }
 
 .ck-fn {
-  color: #facc15;
+  color: var(--cyan);
   font-weight: 700;
 }
 
@@ -268,21 +270,21 @@
 .chip-title {
   font-size: 12px;
   font-weight: 800;
-  color: #ffffff;
+  color: var(--deep-navy);
 }
 
 .chip-sub {
   font-size: 10px;
-  color: #94a3b8;
+  color: var(--muted-blue-gray);
   font-weight: 500;
 }
 
 .chip-badge-live {
   font-size: 9px;
   font-weight: 800;
-  color: #22c55e;
-  background: rgba(34, 197, 94, 0.15);
-  border: 1px solid #22c55e;
+  color: var(--bright-blue);
+  background: var(--light-blue-accent);
+  border: 1px solid var(--soft-border);
   padding: 2px 6px;
   border-radius: 999px;
 }
@@ -290,9 +292,9 @@
 .chip-badge-gold {
   font-size: 9px;
   font-weight: 800;
-  color: #facc15;
-  background: rgba(250, 204, 21, 0.15);
-  border: 1px solid #facc15;
+  color: var(--cyan);
+  background: rgba(8, 181, 232, 0.12);
+  border: 1px solid rgba(8, 181, 232, 0.3);
   padding: 2px 6px;
   border-radius: 999px;
 }

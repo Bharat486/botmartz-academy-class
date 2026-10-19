@@ -1,11 +1,28 @@
 /* Trust Metrics */
 .trust {
-  background: rgba(245, 245, 245, 0.65);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  border-top: 1px solid var(--border-grey);
-  border-bottom: 1px solid var(--border-grey);
+  background: transparent;
+  border-top: 1px solid var(--soft-border);
+  border-bottom: 1px solid var(--soft-border);
 }
+
+body.dark-mode .trust {
+  border-top-color: rgba(56, 189, 248, 0.15) !important;
+  border-bottom-color: rgba(56, 189, 248, 0.15) !important;
+}
+
+body.dark-mode .trust__card {
+  background: #111C35 !important;
+  border-color: rgba(56, 189, 248, 0.18) !important;
+}
+
+body.dark-mode .trust__label {
+  color: #94A3B8 !important;
+}
+
+body.dark-mode .trust__logos-title {
+  color: #94A3B8 !important;
+}
+
 
 .trust__grid {
   display: grid;
@@ -18,7 +35,7 @@
   text-align: center;
   padding: 24px 12px;
   background: var(--white);
-  border: 1.5px solid var(--border-grey);
+  border: 1.5px solid var(--soft-border);
   border-radius: var(--radius-md);
   display: flex;
   flex-direction: column;
@@ -30,12 +47,13 @@
 
 .trust__card:hover {
   transform: translateY(-4px);
-  box-shadow: var(--card-shadow);
+  box-shadow: 0 10px 24px rgba(8, 45, 75, 0.08);
+  border-color: var(--bright-blue);
 }
 
-.trust__card--blue { border-bottom: 3px solid var(--royal-blue); }
-.trust__card--yellow { border-bottom: 3px solid var(--signal-yellow); }
-.trust__card--cyan { border-bottom: 3px solid var(--supporting-cyan); }
+.trust__card--blue { border-bottom: 3px solid var(--bright-blue); }
+.trust__card--yellow { border-bottom: 3px solid var(--cyan); }
+.trust__card--cyan { border-bottom: 3px solid var(--dark-blue); }
 
 .trust__icon {
   font-size: 28px;
@@ -44,14 +62,14 @@
 .trust__value {
   font-size: var(--text-2xl);
   font-weight: 800;
-  color: var(--deep-navy);
+  color: var(--bright-blue);
   font-family: var(--font-mono);
 }
 
 .trust__label {
   font-size: var(--text-xs);
-  color: var(--navy-light);
-  font-weight: 500;
+  color: var(--muted-blue-gray);
+  font-weight: 600;
 }
 
 /* Logos Strip */
@@ -61,7 +79,7 @@
 
 .trust__logos-label {
   font-size: var(--text-sm);
-  color: var(--navy-light);
+  color: var(--muted-blue-gray);
   margin-bottom: 16px;
   display: block;
 }
@@ -76,7 +94,7 @@
 .trust__logo-item {
   font-size: var(--text-lg);
   font-weight: 700;
-  color: var(--border-grey);
+  color: #8faec5;
   letter-spacing: 0.05em;
   transition: color var(--duration-md);
 }

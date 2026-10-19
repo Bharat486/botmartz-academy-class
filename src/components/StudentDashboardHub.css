@@ -1,13 +1,20 @@
 .hub-section {
-  background: rgba(245, 245, 245, 0.65);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  border-top: 1px solid var(--border-grey);
-  border-bottom: 1px solid var(--border-grey);
+  background: transparent;
+  border-top: 1px solid var(--soft-border);
+  border-bottom: 1px solid var(--soft-border);
 }
+
+body.dark-mode .hub-section {
+  border-top-color: rgba(56, 189, 248, 0.15) !important;
+  border-bottom-color: rgba(56, 189, 248, 0.15) !important;
+}
+
 
 .hub-dashboard {
   background: var(--white);
+  border: 1.5px solid var(--soft-border);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 10px 30px rgba(8, 45, 75, 0.05);
   padding: 0;
   overflow: hidden;
   opacity: 0;
@@ -22,23 +29,23 @@
 
 /* Top Live Banner */
 .hub-live-banner {
-  background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+  background: linear-gradient(135deg, #082D4B 0%, #075985 100%);
   color: var(--white);
   padding: 30px 36px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 24px;
-  border-bottom: 2px solid var(--royal-blue);
+  border-bottom: 2px solid var(--bright-blue);
 }
 
 .live-status-pill {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(22, 163, 74, 0.2);
-  color: #4ade80;
-  border: 1px solid #16a34a;
+  background: rgba(8, 181, 232, 0.2);
+  color: var(--cyan);
+  border: 1px solid var(--cyan);
   padding: 4px 12px;
   border-radius: 999px;
   font-size: var(--text-xs);
@@ -50,14 +57,14 @@
 .pulse-dot {
   width: 8px;
   height: 8px;
-  background: #22c55e;
+  background: var(--cyan);
   border-radius: 50%;
   animation: pulse-glow 1.5s infinite;
 }
 
 .live-time {
   font-size: var(--text-sm);
-  color: var(--border-grey);
+  color: #D6EAF7;
   font-weight: 500;
 }
 
@@ -70,15 +77,15 @@
 
 .live-class-meta {
   font-size: var(--text-sm);
-  color: #94a3b8;
+  color: #D6EAF7;
 }
 
 .live-class-meta strong {
-  color: var(--signal-yellow);
+  color: var(--cyan);
 }
 
 .btn-live {
-  background: var(--royal-blue);
+  background: var(--bright-blue);
   color: var(--white);
   padding: 14px 28px;
   font-size: var(--text-base);
@@ -86,7 +93,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  box-shadow: 0 4px 0 #1e3a8a, 0 0 20px rgba(29, 78, 216, 0.4);
+  box-shadow: 0 4px 0 #075985, 0 0 20px rgba(0, 141, 210, 0.4);
 }
 
 .live-antenna {
@@ -103,8 +110,8 @@
 /* Left Profile Pane */
 .hub-profile-pane {
   padding: 32px;
-  border-right: 1.5px solid var(--border-grey);
-  background: #fafafa;
+  border-right: 1.5px solid var(--soft-border);
+  background: var(--light-blue-accent);
 }
 
 .student-profile-card {
@@ -118,14 +125,14 @@
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #1D4ED8, #0284C7);
+  background: var(--brand-gradient);
   color: var(--white);
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 800;
   font-size: var(--text-xl);
-  box-shadow: 0 4px 12px rgba(29, 78, 216, 0.25);
+  box-shadow: 0 4px 12px rgba(0, 141, 210, 0.25);
 }
 
 .student-name {
@@ -136,7 +143,7 @@
 
 .student-batch {
   font-size: var(--text-xs);
-  color: var(--navy-light);
+  color: var(--muted-blue-gray);
   font-weight: 600;
 }
 
@@ -149,7 +156,7 @@
 
 .stat-box {
   background: var(--white);
-  border: 1px solid var(--border-grey);
+  border: 1.5px solid var(--soft-border);
   border-radius: var(--radius-md);
   padding: 12px 8px;
   text-align: center;
@@ -159,14 +166,14 @@
   display: block;
   font-size: var(--text-xl);
   font-weight: 800;
-  color: var(--royal-blue);
+  color: var(--bright-blue);
   font-family: var(--font-mono);
 }
 
 .stat-lbl {
   font-size: 10px;
   font-weight: 700;
-  color: var(--navy-light);
+  color: var(--muted-blue-gray);
 }
 
 .module-title {
@@ -194,7 +201,7 @@
 }
 
 .progress-val {
-  color: var(--royal-blue);
+  color: var(--bright-blue);
   font-family: var(--font-mono);
   font-weight: 700;
 }
@@ -202,7 +209,7 @@
 .progress-bar-bg {
   width: 100%;
   height: 8px;
-  background: #e2e8f0;
+  background: var(--soft-border);
   border-radius: 999px;
   overflow: hidden;
 }
@@ -213,9 +220,9 @@
   transition: width 1s var(--ease-out);
 }
 
-.fill-react { background: #1D4ED8; }
-.fill-node { background: #0284C7; }
-.fill-db { background: #D97706; }
+.fill-react { background: var(--bright-blue); }
+.fill-node { background: var(--cyan); }
+.fill-db { background: var(--dark-blue); }
 
 /* Right Assignments Pane */
 .hub-assignments-pane {
@@ -245,20 +252,20 @@
   justify-content: space-between;
   padding: 16px 20px;
   border-radius: var(--radius-md);
-  border: 1.5px solid var(--border-grey);
+  border: 1.5px solid var(--soft-border);
   background: var(--white);
   cursor: pointer;
   transition: all var(--duration-fast) var(--ease-out);
 }
 
 .assignment-card:hover {
-  border-color: var(--royal-blue);
-  box-shadow: 0 4px 14px rgba(29, 78, 216, 0.08);
+  border-color: var(--bright-blue);
+  box-shadow: 0 4px 14px rgba(0, 141, 210, 0.1);
 }
 
 .assignment-card--done {
-  background: #f8fafc;
-  opacity: 0.6;
+  background: var(--light-blue-accent);
+  opacity: 0.7;
 }
 
 .assignment-card--done .assignment-heading {
@@ -274,7 +281,7 @@
 .assignment-check {
   font-size: 18px;
   font-weight: bold;
-  color: var(--royal-blue);
+  color: var(--bright-blue);
 }
 
 .assignment-heading {
@@ -286,7 +293,7 @@
 
 .assignment-sub {
   font-size: var(--text-xs);
-  color: var(--navy-light);
+  color: var(--muted-blue-gray);
 }
 
 .due-badge {
@@ -299,28 +306,28 @@
 
 .due-urgent {
   background: #fee2e2;
-  color: #dc2626;
-  border: 1px solid #f87171;
+  color: var(--coral-red);
+  border: 1px solid #fca5a5;
 }
 
 .due-medium {
-  background: #fef3c7;
-  color: #d97706;
-  border: 1px solid #fcd34d;
+  background: var(--light-blue-accent);
+  color: var(--dark-blue);
+  border: 1px solid var(--soft-border);
 }
 
 .due-normal {
-  background: #e0f2fe;
-  color: #0284c7;
-  border: 1px solid #7dd3fc;
+  background: var(--light-blue-accent);
+  color: var(--bright-blue);
+  border: 1px solid #bae6fd;
 }
 
 .hub-doubt-card {
   display: flex;
   align-items: center;
   gap: 16px;
-  background: var(--blue-light);
-  border: 1.5px dashed var(--royal-blue);
+  background: var(--light-blue-accent);
+  border: 1.5px dashed var(--bright-blue);
   border-radius: var(--radius-md);
   padding: 16px 20px;
 }
@@ -339,7 +346,7 @@
 
 .doubt-text p {
   font-size: var(--text-xs);
-  color: var(--navy-light);
+  color: var(--muted-blue-gray);
 }
 
 .btn-doubt {

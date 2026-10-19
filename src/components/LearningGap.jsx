@@ -13,7 +13,7 @@ const gaps = [
     icon: '🤯',
     title: 'No Clear Roadmap',
     desc: 'Jumping between random tutorials without a structured path leads to knowledge gaps.',
-    solution: 'Structured 8-week curriculum with milestones',
+    solution: 'Structured 6-week curriculum with milestones',
     color: 'yellow',
   },
   {

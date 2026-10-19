@@ -1,306 +1,977 @@
+/* ========================================================
+   Fast-Track Application & Enrollment Modal Styles
+   Matches Reference Design with Animated Mini Bot
+   ======================================================== */
+
 .modal-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(15, 23, 42, 0.7);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  z-index: 2000;
+  background: rgba(8, 26, 44, 0.72);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 2500;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
-  animation: fadeIn 0.2s ease-out;
+  padding: 16px;
+  animation: fadeIn 0.25s ease-out;
 }
 
 .enroll-modal {
-  background: var(--white);
-  border-radius: var(--radius-lg);
-  max-width: 860px;
+  background: #ffffff;
+  border-radius: 24px;
+  max-width: 1140px;
   width: 100%;
-  max-height: 90vh;
+  max-height: 94vh;
   overflow-y: auto;
   position: relative;
-  padding: 36px;
-  animation: fadeInUp 0.3s var(--ease-out);
+  padding: 32px 36px;
+  box-shadow: 0 25px 60px -15px rgba(8, 45, 75, 0.3), 0 0 0 1px rgba(214, 234, 247, 0.6);
+  animation: modalPopUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes modalPopUp {
+  0% { transform: scale(0.96) translateY(12px); opacity: 0; }
+  100% { transform: scale(1) translateY(0); opacity: 1; }
 }
 
 .modal-close-btn {
   position: absolute;
-  top: 18px;
-  right: 20px;
-  font-size: 32px;
+  top: 20px;
+  right: 24px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  font-size: 24px;
   line-height: 1;
-  color: var(--navy-light);
+  color: #64748b;
   cursor: pointer;
-  background: none;
-  border: none;
-  transition: color var(--duration-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  z-index: 10;
 }
 
 .modal-close-btn:hover {
-  color: var(--deep-navy);
+  background: #e2e8f0;
+  color: #0f172a;
+  transform: rotate(90deg);
 }
 
-.modal-header {
+/* Modal Header */
+.enroll-modal-header {
   margin-bottom: 24px;
 }
 
-.modal-title {
-  font-size: var(--text-2xl);
+.priority-pill {
+  display: inline-block;
+  background: #fee2e2;
+  color: #ef4444;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  padding: 4px 12px;
+  border-radius: 999px;
+  margin-bottom: 8px;
+}
+
+.enroll-modal-title {
+  font-size: 1.65rem;
   font-weight: 800;
-  color: var(--deep-navy);
-  margin: 10px 0 6px;
+  color: #082D4B;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
 }
 
-.modal-sub {
-  font-size: var(--text-sm);
-  color: var(--navy-light);
+.highlight-blue {
+  color: #008DD2;
 }
 
-.modal-body-grid {
+.enroll-modal-sub {
+  font-size: 0.88rem;
+  color: #6485A0;
+  margin-top: 4px;
+}
+
+/* 3-Column Body Grid */
+.enroll-3col-grid {
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 32px;
+  grid-template-columns: 1.15fr 0.85fr 0.9fr;
+  gap: 24px;
+  align-items: start;
 }
 
-.enroll-form {
+/* ========================================================
+   COLUMN 1: Form Column
+   ======================================================== */
+.enroll-form-col {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-}
-
-.form-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
   gap: 14px;
 }
 
-.form-group {
+.input-field-group {
   display: flex;
   flex-direction: column;
   gap: 6px;
 }
 
-.form-group label {
-  font-size: var(--text-xs);
+.input-field-group label {
+  font-size: 0.82rem;
   font-weight: 700;
-  color: var(--deep-navy);
+  color: #082D4B;
 }
 
-.form-group input,
-.form-group select {
-  padding: 12px 14px;
-  border: 1.5px solid var(--border-grey);
-  border-radius: var(--radius-md);
+.req-star {
+  color: #ef4444;
+}
+
+.field-row-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.field-icon-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.field-icon {
+  position: absolute;
+  left: 14px;
+  font-size: 0.95rem;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.field-icon-wrap input,
+.field-icon-wrap select {
+  width: 100%;
+  padding: 11px 14px 11px 40px;
+  font-size: 0.88rem;
   font-family: inherit;
-  font-size: var(--text-sm);
-  color: var(--deep-navy);
-  background: var(--white);
+  color: #082D4B;
+  background: #ffffff;
+  border: 1.5px solid #d6eaf7;
+  border-radius: 10px;
   outline: none;
-  transition: border-color var(--duration-fast);
+  transition: all 0.2s ease;
 }
 
-.form-group input:focus,
-.form-group select:focus {
-  border-color: var(--royal-blue);
-  box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.12);
+.field-icon-wrap input:focus,
+.field-icon-wrap select:focus {
+  border-color: #008DD2;
+  box-shadow: 0 0 0 3px rgba(0, 141, 210, 0.15);
 }
 
-.pay-label {
-  font-size: var(--text-xs);
+.field-icon-wrap select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236485A0' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 16px;
+  padding-right: 36px;
+}
+
+/* Payment Options */
+.payment-heading-label {
+  font-size: 0.82rem;
   font-weight: 700;
-  color: var(--deep-navy);
-  margin-bottom: 8px;
+  color: #082D4B;
   display: block;
+  margin-bottom: 4px;
 }
 
-.pay-methods {
+.payment-options-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 8px;
 }
 
-.pay-method-pill {
+.pay-option-card {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 6px;
-  padding: 10px 8px;
-  border: 1.5px solid var(--border-grey);
-  border-radius: var(--radius-sm);
-  font-size: var(--text-xs);
-  font-weight: 700;
+  padding: 11px 8px;
+  border: 1.5px solid #d6eaf7;
+  border-radius: 10px;
+  background: #f8fbfe;
   cursor: pointer;
-  text-align: center;
-  background: var(--grid-grey);
-  transition: all var(--duration-fast);
+  transition: all 0.2s ease;
+  position: relative;
 }
 
-.pay-method-pill input {
-  display: none;
+.pay-opt-icon {
+  font-size: 1rem;
 }
 
-.pay-method-pill--active {
-  border-color: var(--royal-blue);
-  background: var(--blue-light);
-  color: var(--royal-blue);
+.pay-opt-text {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #082D4B;
 }
 
-.btn-submit-enroll {
-  margin-top: 10px;
-  width: 100%;
-  padding: 14px;
-  font-size: var(--text-base);
+.pay-option-card:hover {
+  background: #eaf6fd;
+  border-color: #008DD2;
 }
 
-/* Order Summary Box */
-.order-summary-box {
-  background: var(--grid-grey);
-  border: 1.5px solid var(--border-grey);
-  border-radius: var(--radius-md);
-  padding: 24px 20px;
+.pay-option-card--active {
+  background: #008DD2 !important;
+  border-color: #008DD2 !important;
+  box-shadow: 0 4px 12px rgba(0, 141, 210, 0.25);
+}
+
+.pay-option-card--active .pay-opt-text {
+  color: #ffffff !important;
+}
+
+.opt-check {
+  font-size: 0.75rem;
+  background: #ffffff;
+  color: #008DD2;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  margin-left: 2px;
+}
+
+/* Security Notice */
+.enroll-security-notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: #f1f8fc;
+  border: 1px solid #d6eaf7;
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin-top: 6px;
+}
+
+.security-shield-icon {
+  font-size: 1.15rem;
+  color: #008DD2;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.security-text {
+  font-size: 0.75rem;
+  color: #6485A0;
+  line-height: 1.45;
+}
+
+.security-text a {
+  color: #008DD2;
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+/* ========================================================
+   COLUMN 2: Center Mini Bot & Progress Stepper
+   ======================================================== */
+.enroll-bot-col {
+  background: linear-gradient(180deg, #f0f7ff 0%, #e8f4fc 100%);
+  border: 1px solid #d6eaf7;
+  border-radius: 18px;
+  padding: 20px 18px;
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  height: fit-content;
+  gap: 16px;
+  position: relative;
+  overflow: hidden;
 }
 
-.summary-title {
-  font-size: var(--text-base);
-  font-weight: 800;
-  color: var(--deep-navy);
-  padding-bottom: 10px;
-  border-bottom: 1px solid var(--border-grey);
+/* Speech Bubble */
+.bot-speech-bubble {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 10px 14px;
+  box-shadow: 0 4px 14px rgba(8, 45, 75, 0.08);
+  border: 1px solid #dbeafe;
+  position: relative;
+  text-align: center;
+  z-index: 2;
+  animation: bubbleFloat 3s ease-in-out infinite;
 }
 
-.summary-line {
-  display: flex;
-  justify-content: space-between;
-  font-size: var(--text-sm);
-  color: var(--navy-light);
+@keyframes bubbleFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
 }
 
-.summary-val {
+.bubble-text {
+  font-size: 0.82rem;
   font-weight: 700;
-  color: var(--deep-navy);
-  font-family: var(--font-mono);
+  color: #082D4B;
 }
 
-.discount-line {
-  color: #16a34a;
-  font-weight: 700;
+.bubble-tail {
+  position: absolute;
+  bottom: -7px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 7px solid #ffffff;
 }
 
-.discount-line .summary-val {
-  color: #16a34a;
-}
-
-.summary-total {
+/* Animated 3D Mini Bot Stage */
+.mini-bot-stage {
+  position: relative;
+  width: 100%;
+  height: 200px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding-top: 12px;
-  border-top: 2px dashed var(--border-grey);
-  font-size: var(--text-base);
+  justify-content: center;
+  user-select: none;
+  margin: 4px 0;
+}
+
+.bot-ambient-glow {
+  position: absolute;
+  width: 170px;
+  height: 170px;
+  background: radial-gradient(circle, rgba(8, 181, 232, 0.32) 0%, rgba(0, 141, 210, 0.1) 50%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: glowPulse 2.8s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+  0%, 100% { transform: scale(1); opacity: 0.7; }
+  50% { transform: scale(1.25); opacity: 1; }
+}
+
+/* Bot Character Floating Motion */
+.bot-character-wrap {
+  position: relative;
+  width: 205px;
+  height: 205px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: botFloatHover 3.4s ease-in-out infinite;
+}
+
+@keyframes botFloatHover {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  38% {
+    /* Natural gentle gesture towards form on left */
+    transform: translateY(-10px) rotate(-1.5deg) translateX(-4px);
+  }
+  70% {
+    transform: translateY(-4px) rotate(0.8deg);
+  }
+}
+
+/* Exact 100% 3D Mascot Bot Base */
+.bot-base-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 12px 24px rgba(8, 45, 75, 0.2));
+  position: relative;
+  z-index: 1;
+}
+
+/* Realistic Digital Visor Eye Blinking */
+.bot-blink-eyelid {
+  position: absolute;
+  background: radial-gradient(circle, #081a33 60%, #030e1d 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 2;
+  transform-origin: center center;
+  opacity: 0;
+  transform: scaleY(0);
+  animation: naturalVisorBlink 3.4s infinite ease-in-out;
+}
+
+.bot-blink-eyelid--left {
+  top: 21.2%;
+  left: 36.3%;
+  width: 12%;
+  height: 9.4%;
+}
+
+.bot-blink-eyelid--right {
+  top: 25.2%;
+  left: 53.3%;
+  width: 14.5%;
+  height: 11%;
+}
+
+.blink-slit {
+  width: 80%;
+  height: 2.5px;
+  background: #08B5E8;
+  border-radius: 3px;
+  box-shadow: 0 0 8px #08B5E8, 0 0 14px rgba(8, 181, 232, 0.9);
+}
+
+@keyframes naturalVisorBlink {
+  0%, 86%, 94%, 100% {
+    opacity: 0;
+    transform: scaleY(0);
+  }
+  88%, 92% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+/* Stepper Timeline */
+.bot-timeline-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 4px 6px;
+}
+
+.timeline-step {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+}
+
+.timeline-step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 13px;
+  top: 28px;
+  width: 2px;
+  height: 14px;
+  background: #cbd5e1;
+}
+
+.step-badge-num {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #e2e8f0;
+  color: #64748b;
+  font-size: 0.82rem;
   font-weight: 800;
-  color: var(--deep-navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.25s ease;
 }
 
-.total-val {
-  font-size: var(--text-2xl);
-  color: var(--royal-blue);
-  font-family: var(--font-mono);
+.timeline-step--active .step-badge-num {
+  background: #008DD2;
+  color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 141, 210, 0.4);
 }
 
-.coupon-box {
+.timeline-step--done .step-badge-num {
+  background: #10b981;
+  color: #ffffff;
+}
+
+.step-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #082D4B;
+  margin: 0;
+}
+
+.step-desc {
+  font-size: 0.72rem;
+  color: #6485A0;
+  margin: 0;
+}
+
+/* Dynamic Assistant Tip Box */
+.bot-tip-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: #ffffff;
+  border: 1px dashed rgba(0, 141, 210, 0.4);
+  border-radius: 12px;
+  padding: 10px 12px;
+  margin-top: auto;
+}
+
+.tip-icon-wrap {
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.tip-title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #082D4B;
+  margin-bottom: 2px;
+}
+
+.tip-sub {
+  font-size: 0.72rem;
+  color: #6485A0;
+  line-height: 1.35;
+}
+
+/* ========================================================
+   COLUMN 3: Right Cohort Summary & Checkout
+   ======================================================== */
+.enroll-summary-col {
+  background: #f8fafc;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 18px;
+  padding: 22px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.summary-main-heading {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #082D4B;
+  margin: 0;
+}
+
+.selected-cohort-pill-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  background: #ffffff;
+  border: 1px solid #d6eaf7;
+  border-radius: 10px;
+}
+
+.cohort-icon-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: #082D4B;
+}
+
+.grad-cap-icon {
+  font-size: 1.1rem;
+}
+
+.badge-selected-tag {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #008DD2;
+  background: #eaf6fd;
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid #d6eaf7;
+}
+
+.summary-pricing-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-bottom: 12px;
+  border-bottom: 1px dashed #cbd5e1;
+}
+
+.summary-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.85rem;
+}
+
+.row-lbl {
+  color: #6485A0;
+  font-weight: 500;
+}
+
+.row-val {
+  color: #082D4B;
+  font-weight: 700;
+}
+
+.summary-row--discount .row-lbl,
+.summary-row--discount .row-val {
+  color: #008DD2;
+  font-weight: 700;
+}
+
+/* Total Amount */
+.summary-total-banner {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-top: -4px;
+}
+
+.total-lbl {
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: #082D4B;
+}
+
+.total-big-price {
+  font-size: 1.65rem;
+  font-weight: 900;
+  color: #008DD2;
+  font-family: var(--font-sans);
+}
+
+/* Coupon Group */
+.summary-coupon-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.coupon-input-wrap {
   display: flex;
   gap: 8px;
 }
 
-.coupon-box input {
-  flex-grow: 1;
+.coupon-input-wrap input {
+  flex: 1;
   padding: 8px 12px;
-  border: 1.5px solid var(--border-grey);
-  border-radius: var(--radius-sm);
-  font-size: var(--text-xs);
+  font-size: 0.85rem;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  border: 1.5px solid #d6eaf7;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #082D4B;
   text-transform: uppercase;
+  outline: none;
 }
 
-.coupon-box .btn-sm {
-  padding: 8px 14px;
-  min-height: auto;
-  font-size: var(--text-xs);
+.coupon-input-wrap input:focus {
+  border-color: #008DD2;
 }
 
-.guarantee-box {
+.btn-coupon-apply {
+  padding: 8px 16px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #ffffff;
+  background: #008DD2;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-coupon-apply:hover {
+  background: #075985;
+}
+
+.coupon-status-pill {
+  font-size: 0.74rem;
+  font-weight: 700;
+  padding: 6px 10px;
+  border-radius: 6px;
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 11px;
-  color: var(--navy-light);
-  line-height: 1.4;
-  padding-top: 8px;
+  gap: 6px;
 }
 
-.shield-icon {
-  font-size: 18px;
+.coupon-status-pill--success {
+  background: #dcfce7;
+  color: #15803d;
+  border: 1px solid #bbf7d0;
+}
+
+.status-chk {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #16a34a;
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+}
+
+.coupon-status-pill--error {
+  background: #fee2e2;
+  color: #b91c1c;
+  border: 1px solid #fecaca;
+}
+
+/* Guarantee Card */
+.summary-guarantee-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: #f0f7ff;
+  border: 1px solid #dbeafe;
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+
+.guarantee-shield {
+  font-size: 1.15rem;
+  color: #008DD2;
   flex-shrink: 0;
 }
 
-/* Success Screen */
-.success-screen {
+.guarantee-text strong {
+  display: block;
+  font-size: 0.76rem;
+  color: #082D4B;
+}
+
+.guarantee-text p {
+  font-size: 0.7rem;
+  color: #6485A0;
+  margin-top: 1px;
+}
+
+/* Pay CTA */
+.btn-pay-enroll-cta {
+  width: 100%;
+  padding: 14px 20px;
+  font-size: 0.98rem;
+  font-weight: 800;
+  color: #ffffff;
+  background: #008DD2;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+  box-shadow: 0 6px 20px rgba(0, 141, 210, 0.35);
+  margin-top: 4px;
+}
+
+.btn-pay-enroll-cta:hover {
+  background: #075985;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 141, 210, 0.45);
+}
+
+.cta-arrow {
+  font-size: 1.1rem;
+  transition: transform 0.2s ease;
+}
+
+.btn-pay-enroll-cta:hover .cta-arrow {
+  transform: translateX(4px);
+}
+
+/* ========================================================
+   Success Screen
+   ======================================================== */
+.enrollment-success-view {
   text-align: center;
-  padding: 40px 20px;
+  padding: 30px 16px;
+  animation: fadeIn 0.4s ease;
 }
 
-.success-icon {
-  font-size: 56px;
-  margin-bottom: 16px;
-}
-
-.success-title {
-  font-size: var(--text-3xl);
-  font-weight: 900;
-  color: var(--deep-navy);
+.success-confetti-badge {
+  font-size: 3rem;
   margin-bottom: 12px;
 }
 
-.success-msg {
-  font-size: var(--text-base);
-  color: var(--navy-light);
-  max-width: 520px;
-  margin: 0 auto 24px;
-  line-height: 1.6;
+.success-head {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #082D4B;
+  margin-bottom: 8px;
 }
 
-.success-details {
-  background: var(--grid-grey);
-  border: 1.5px solid var(--border-grey);
-  border-radius: var(--radius-md);
+.success-subtitle {
+  font-size: 0.95rem;
+  color: #6485A0;
+  max-width: 500px;
+  margin: 0 auto 24px;
+  line-height: 1.5;
+}
+
+.success-meta-card {
+  background: #f8fbfe;
+  border: 1px solid #d6eaf7;
+  border-radius: 14px;
   padding: 18px 24px;
   max-width: 480px;
-  margin: 0 auto 28px;
+  margin: 0 auto 24px;
   text-align: left;
+}
+
+.meta-line {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  font-size: 0.9rem;
+}
+
+.meta-lbl {
+  color: #6485A0;
+  font-weight: 500;
+}
+
+.meta-val {
+  color: #082D4B;
+  font-weight: 700;
+}
+
+.text-green {
+  color: #10b981 !important;
+}
+
+.success-actions-row {
   display: flex;
   flex-direction: column;
+  gap: 12px;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.btn-whatsapp-success {
+  background: #25D366;
+  color: #ffffff;
+  padding: 14px 20px;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   gap: 8px;
-  font-size: var(--text-sm);
+  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.35);
+  transition: all 0.2s ease;
+}
+
+.btn-whatsapp-success:hover {
+  background: #20bd5a;
+  transform: translateY(-2px);
+}
+
+/* ========================================================
+   Dark Mode Overrides
+   ======================================================== */
+body.dark-mode .enroll-modal {
+  background: #091a2e;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), 0 0 0 1px #19385c;
+}
+
+body.dark-mode .enroll-modal-title,
+body.dark-mode .input-field-group label,
+body.dark-mode .payment-heading-label,
+body.dark-mode .summary-main-heading,
+body.dark-mode .cohort-icon-title,
+body.dark-mode .row-val,
+body.dark-mode .total-lbl,
+body.dark-mode .step-title,
+body.dark-mode .tip-title,
+body.dark-mode .guarantee-text strong,
+body.dark-mode .bubble-text,
+body.dark-mode .success-head,
+body.dark-mode .meta-val {
+  color: #f0f7ff;
+}
+
+body.dark-mode .field-icon-wrap input,
+body.dark-mode .field-icon-wrap select,
+body.dark-mode .coupon-input-wrap input {
+  background: #0c1e33;
+  border-color: #1e4570;
+  color: #f0f7ff;
+}
+
+body.dark-mode .pay-option-card {
+  background: #0c1e33;
+  border-color: #1e4570;
+}
+
+body.dark-mode .pay-opt-text {
+  color: #cbd5e1;
+}
+
+body.dark-mode .enroll-bot-col {
+  background: linear-gradient(180deg, #0d223a 0%, #081626 100%);
+  border-color: #19385c;
+}
+
+body.dark-mode .bot-speech-bubble,
+body.dark-mode .bot-tip-card,
+body.dark-mode .selected-cohort-pill-card {
+  background: #091a2e;
+  border-color: #1e4570;
+}
+
+body.dark-mode .bubble-tail {
+  border-top-color: #091a2e;
+}
+
+body.dark-mode .enroll-summary-col {
+  background: #0a1b2d;
+  border-color: #19385c;
+}
+
+body.dark-mode .modal-close-btn {
+  background: #0d223a;
+  border-color: #1e4570;
+  color: #94a3b8;
+}
+
+body.dark-mode .enroll-security-notice,
+body.dark-mode .summary-guarantee-card {
+  background: #0c1e33;
+  border-color: #19385c;
+}
+
+/* ========================================================
+   Responsive Breakpoints
+   ======================================================== */
+@media (max-width: 1024px) {
+  .enroll-3col-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .enroll-summary-col {
+    grid-column: span 2;
+  }
 }
 
 @media (max-width: 768px) {
-  .modal-body-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .form-row {
-    grid-template-columns: 1fr;
-  }
-  
-  .pay-methods {
-    grid-template-columns: 1fr;
-  }
-  
   .enroll-modal {
-    padding: 24px;
+    padding: 24px 18px;
+    max-height: 96vh;
+  }
+  .enroll-3col-grid {
+    grid-template-columns: 1fr;
+  }
+  .enroll-summary-col {
+    grid-column: span 1;
+  }
+  .field-row-2 {
+    grid-template-columns: 1fr;
+  }
+  .payment-options-grid {
+    grid-template-columns: 1fr;
   }
 }

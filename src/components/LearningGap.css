@@ -4,17 +4,18 @@
   gap: 20px;
 }
 
-.gap__card {
+.gap__card,
+.gap__card.card-3d {
   padding: 28px 22px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   gap: 20px;
+  background: var(--white) !important;
+  border: 1.5px solid var(--soft-border) !important;
+  box-shadow: var(--card-shadow);
+  color: var(--deep-navy) !important;
 }
-
-.gap__card--blue::after { background: var(--royal-blue); }
-.gap__card--yellow::after { background: #ca8a04; }
-.gap__card--cyan::after { background: var(--supporting-cyan); }
 
 .gap__icon {
   font-size: 32px;
@@ -24,13 +25,14 @@
 
 .gap__card-title {
   font-size: var(--text-lg);
-  font-weight: 700;
+  font-weight: 800;
   margin-bottom: 8px;
+  color: var(--deep-navy) !important;
 }
 
 .gap__card-desc {
   font-size: var(--text-sm);
-  color: var(--navy-light);
+  color: var(--muted-blue-gray) !important;
   line-height: 1.6;
 }
 
@@ -39,17 +41,17 @@
   align-items: flex-start;
   gap: 8px;
   padding: 12px 14px;
-  background: rgba(29, 78, 216, 0.06);
+  background: var(--light-blue-accent) !important;
   border-radius: var(--radius-sm);
   font-size: var(--text-sm);
-  font-weight: 600;
-  color: var(--royal-blue);
-  border-left: 3px solid var(--royal-blue);
+  font-weight: 700;
+  color: var(--dark-blue) !important;
+  border-left: 3px solid var(--bright-blue) !important;
 }
 
 .gap__check {
-  color: #16a34a;
-  font-weight: 700;
+  color: var(--cyan) !important;
+  font-weight: 800;
   flex-shrink: 0;
 }
 

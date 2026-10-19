@@ -43,24 +43,24 @@ export default function WaveBackground() {
 
     /* --- Flowing Wave Lines Configuration --- */
     const waveConfigs = [
-      { amplitude: 45, wavelength: 750, speed: 0.015, yOffset: 0.22, color: 'rgba(29, 78, 216, 0.09)', lineWidth: 2.5 },
-      { amplitude: 35, wavelength: 550, speed: 0.022, yOffset: 0.32, color: 'rgba(30, 41, 59, 0.07)', lineWidth: 2 },
-      { amplitude: 55, wavelength: 900, speed: 0.012, yOffset: 0.46, color: 'rgba(29, 78, 216, 0.12)', lineWidth: 3 },
-      { amplitude: 30, wavelength: 480, speed: 0.028, yOffset: 0.58, color: 'rgba(2, 132, 199, 0.08)', lineWidth: 1.5 },
-      { amplitude: 50, wavelength: 850, speed: 0.018, yOffset: 0.70, color: 'rgba(30, 41, 59, 0.06)', lineWidth: 2.5 },
-      { amplitude: 38, wavelength: 650, speed: 0.024, yOffset: 0.82, color: 'rgba(29, 78, 216, 0.08)', lineWidth: 2 },
+      { amplitude: 45, wavelength: 750, speed: 0.015, yOffset: 0.22, color: 'rgba(0, 141, 210, 0.09)', lineWidth: 2.5 },
+      { amplitude: 35, wavelength: 550, speed: 0.022, yOffset: 0.32, color: 'rgba(8, 45, 75, 0.06)', lineWidth: 2 },
+      { amplitude: 55, wavelength: 900, speed: 0.012, yOffset: 0.46, color: 'rgba(8, 181, 232, 0.10)', lineWidth: 3 },
+      { amplitude: 30, wavelength: 480, speed: 0.028, yOffset: 0.58, color: 'rgba(7, 89, 133, 0.08)', lineWidth: 1.5 },
+      { amplitude: 50, wavelength: 850, speed: 0.018, yOffset: 0.70, color: 'rgba(8, 45, 75, 0.05)', lineWidth: 2.5 },
+      { amplitude: 38, wavelength: 650, speed: 0.024, yOffset: 0.82, color: 'rgba(0, 141, 210, 0.08)', lineWidth: 2 },
     ]
     const activeWaves = isMobile ? waveConfigs.slice(0, 3) : isTablet ? waveConfigs.slice(0, 5) : waveConfigs
 
     /* --- Circular Rounding Motion Orbits Configuration --- */
     // Two circular centers: Primary in the Hero right area, secondary in lower-left
     const circularOrbits = [
-      { radius: 90, speed: 0.018, color: 'rgba(29, 78, 216, 0.25)', lineWidth: 1.8, dash: [8, 8], nodes: 3 },
-      { radius: 150, speed: -0.012, color: 'rgba(2, 132, 199, 0.22)', lineWidth: 1.5, dash: [14, 10], nodes: 4 },
-      { radius: 220, speed: 0.009, color: 'rgba(30, 41, 59, 0.18)', lineWidth: 2.0, dash: [20, 14], nodes: 5 },
-      { radius: 290, speed: -0.007, color: 'rgba(29, 78, 216, 0.16)', lineWidth: 1.5, dash: [28, 18], nodes: 6 },
-      { radius: 370, speed: 0.005, color: 'rgba(250, 204, 21, 0.20)', lineWidth: 1.8, dash: [10, 15], nodes: 4 },
-      { radius: 460, speed: -0.004, color: 'rgba(2, 132, 199, 0.12)', lineWidth: 1.2, dash: [35, 20], nodes: 7 },
+      { radius: 90, speed: 0.018, color: 'rgba(0, 141, 210, 0.25)', lineWidth: 1.8, dash: [8, 8], nodes: 3 },
+      { radius: 150, speed: -0.012, color: 'rgba(8, 181, 232, 0.22)', lineWidth: 1.5, dash: [14, 10], nodes: 4 },
+      { radius: 220, speed: 0.009, color: 'rgba(8, 45, 75, 0.15)', lineWidth: 2.0, dash: [20, 14], nodes: 5 },
+      { radius: 290, speed: -0.007, color: 'rgba(7, 89, 133, 0.16)', lineWidth: 1.5, dash: [28, 18], nodes: 6 },
+      { radius: 370, speed: 0.005, color: 'rgba(8, 181, 232, 0.18)', lineWidth: 1.8, dash: [10, 15], nodes: 4 },
+      { radius: 460, speed: -0.004, color: 'rgba(0, 141, 210, 0.12)', lineWidth: 1.2, dash: [35, 20], nodes: 7 },
     ]
     const activeCircularOrbits = isMobile ? circularOrbits.slice(0, 3) : circularOrbits
 
@@ -72,7 +72,7 @@ export default function WaveBackground() {
       orbitSpeed: ((idx % 2 === 0 ? 1 : -1) * (0.006 + Math.random() * 0.008)),
       size: Math.random() * 3.5 + 1.5,
       opacity: Math.random() * 0.35 + 0.15,
-      color: ['#1D4ED8', '#0284C7', '#1E293B', '#FACC15'][idx % 4],
+      color: ['#008DD2', '#08B5E8', '#075985', '#D6EAF7'][idx % 4],
     }))
 
     /* --- Helper: Draw Undulating Circular Wave --- */
@@ -123,8 +123,8 @@ export default function WaveBackground() {
       for (let k = 1; k <= circularWaveCounts; k++) {
         const baseR = k * (isMobile ? 45 : 65)
         const waveColor = k % 2 === 0
-          ? `rgba(29, 78, 216, ${0.14 - k * 0.015})`
-          : `rgba(2, 132, 199, ${0.12 - k * 0.012})`
+          ? `rgba(0, 141, 210, ${0.14 - k * 0.015})`
+          : `rgba(8, 181, 232, ${0.12 - k * 0.012})`
         drawWavyCircle(
           ctx,
           circleCenterX,
@@ -151,7 +151,7 @@ export default function WaveBackground() {
             -0.015,
             4,
             12,
-            `rgba(30, 41, 59, ${0.08 - s * 0.015})`,
+            `rgba(8, 45, 75, ${0.08 - s * 0.015})`,
             1.5
           )
         }
